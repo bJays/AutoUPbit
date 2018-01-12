@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.MinuteGrpBox = new System.Windows.Forms.GroupBox();
+            this.MinuteComboBox = new System.Windows.Forms.ComboBox();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripProgressBar1 = new System.Windows.Forms.ToolStripProgressBar();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
@@ -79,35 +79,47 @@
             this.Min10ColumnHeader11 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Min5ColumnHeader0 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Min10ColumnHeader0 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.groupBox1.SuspendLayout();
+            this.CountGrpBox = new System.Windows.Forms.GroupBox();
+            this.CountNumeric = new System.Windows.Forms.NumericUpDown();
+            this.MinuteGrpBox.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.TabPageMin1.SuspendLayout();
             this.TabPageMin5.SuspendLayout();
             this.TabPageMin10.SuspendLayout();
+            this.CountGrpBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.CountNumeric)).BeginInit();
             this.SuspendLayout();
             // 
-            // groupBox1
+            // MinuteGrpBox
             // 
-            this.groupBox1.Controls.Add(this.comboBox1);
-            this.groupBox1.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.groupBox1.Location = new System.Drawing.Point(203, 12);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(100, 50);
-            this.groupBox1.TabIndex = 0;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Minutes";
+            this.MinuteGrpBox.Controls.Add(this.MinuteComboBox);
+            this.MinuteGrpBox.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.MinuteGrpBox.Location = new System.Drawing.Point(203, 12);
+            this.MinuteGrpBox.Name = "MinuteGrpBox";
+            this.MinuteGrpBox.Size = new System.Drawing.Size(100, 50);
+            this.MinuteGrpBox.TabIndex = 0;
+            this.MinuteGrpBox.TabStop = false;
+            this.MinuteGrpBox.Text = "Minutes";
             // 
-            // comboBox1
+            // MinuteComboBox
             // 
-            this.comboBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(3, 19);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(94, 23);
-            this.comboBox1.TabIndex = 0;
+            this.MinuteComboBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.MinuteComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.MinuteComboBox.FormattingEnabled = true;
+            this.MinuteComboBox.Items.AddRange(new object[] {
+            "1",
+            "3",
+            "5",
+            "10",
+            "30",
+            "60",
+            "240"});
+            this.MinuteComboBox.Location = new System.Drawing.Point(3, 19);
+            this.MinuteComboBox.Name = "MinuteComboBox";
+            this.MinuteComboBox.Size = new System.Drawing.Size(94, 23);
+            this.MinuteComboBox.TabIndex = 0;
             // 
             // statusStrip1
             // 
@@ -116,7 +128,7 @@
             this.toolStripStatusLabel1});
             this.statusStrip1.Location = new System.Drawing.Point(0, 539);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(784, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(984, 22);
             this.statusStrip1.TabIndex = 1;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -136,7 +148,7 @@
             this.StartBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.StartBtn.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.StartBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.StartBtn.Location = new System.Drawing.Point(672, 22);
+            this.StartBtn.Location = new System.Drawing.Point(872, 22);
             this.StartBtn.Name = "StartBtn";
             this.StartBtn.Size = new System.Drawing.Size(100, 40);
             this.StartBtn.TabIndex = 2;
@@ -175,7 +187,7 @@
             this.tabControl1.Location = new System.Drawing.Point(12, 68);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(760, 468);
+            this.tabControl1.Size = new System.Drawing.Size(960, 468);
             this.tabControl1.TabIndex = 4;
             // 
             // TabPageMin1
@@ -184,7 +196,7 @@
             this.TabPageMin1.Location = new System.Drawing.Point(4, 24);
             this.TabPageMin1.Name = "TabPageMin1";
             this.TabPageMin1.Padding = new System.Windows.Forms.Padding(3);
-            this.TabPageMin1.Size = new System.Drawing.Size(752, 440);
+            this.TabPageMin1.Size = new System.Drawing.Size(952, 440);
             this.TabPageMin1.TabIndex = 0;
             this.TabPageMin1.Text = "TabPageMin1";
             this.TabPageMin1.UseVisualStyleBackColor = true;
@@ -210,41 +222,75 @@
             this.ListViewMin1.GridLines = true;
             this.ListViewMin1.Location = new System.Drawing.Point(3, 3);
             this.ListViewMin1.Name = "ListViewMin1";
-            this.ListViewMin1.Size = new System.Drawing.Size(746, 434);
+            this.ListViewMin1.Size = new System.Drawing.Size(946, 434);
             this.ListViewMin1.TabIndex = 0;
             this.ListViewMin1.UseCompatibleStateImageBehavior = false;
             this.ListViewMin1.View = System.Windows.Forms.View.Details;
+            // 
+            // Min1ColumnHeader0
+            // 
             this.Min1ColumnHeader0.Text = "Index";
             this.Min1ColumnHeader0.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.Min1ColumnHeader0.Width = 50;
+            // 
+            // Min1ColumnHeader1
+            // 
             this.Min1ColumnHeader1.Text = "Code";
             this.Min1ColumnHeader1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.Min1ColumnHeader1.Width = 1;
+            // 
+            // Min1ColumnHeader2
+            // 
             this.Min1ColumnHeader2.Text = "CandleDateTime";
-            this.Min1ColumnHeader2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.Min1ColumnHeader2.Width = 3;
+            this.Min1ColumnHeader2.Width = 155;
+            // 
+            // Min1ColumnHeader3
+            // 
             this.Min1ColumnHeader3.Text = "CandleDateTimeKst";
-            this.Min1ColumnHeader3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.Min1ColumnHeader3.Width = 3;
+            this.Min1ColumnHeader3.Width = 155;
+            // 
+            // Min1ColumnHeader4
+            // 
             this.Min1ColumnHeader4.Text = "OpeningPrice";
             this.Min1ColumnHeader4.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.Min1ColumnHeader4.Width = 85;
+            // 
+            // Min1ColumnHeader5
+            // 
             this.Min1ColumnHeader5.Text = "HighPrice";
             this.Min1ColumnHeader5.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.Min1ColumnHeader5.Width = 85;
+            // 
+            // Min1ColumnHeader6
+            // 
             this.Min1ColumnHeader6.Text = "LowPrice";
             this.Min1ColumnHeader6.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.Min1ColumnHeader6.Width = 85;
+            // 
+            // Min1ColumnHeader7
+            // 
             this.Min1ColumnHeader7.Text = "TradePrice";
             this.Min1ColumnHeader7.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.Min1ColumnHeader7.Width = 85;
+            // 
+            // Min1ColumnHeader8
+            // 
             this.Min1ColumnHeader8.Text = "CandleAccTradeVolume";
             this.Min1ColumnHeader8.Width = 3;
+            // 
+            // Min1ColumnHeader9
+            // 
             this.Min1ColumnHeader9.Text = "CandleAccTradePrice";
             this.Min1ColumnHeader9.Width = 3;
+            // 
+            // Min1ColumnHeader10
+            // 
             this.Min1ColumnHeader10.Text = "Timestamp";
             this.Min1ColumnHeader10.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.Min1ColumnHeader10.Width = 125;
+            // 
+            // Min1ColumnHeader11
+            // 
             this.Min1ColumnHeader11.Text = "Unit";
             this.Min1ColumnHeader11.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.Min1ColumnHeader11.Width = 50;
@@ -255,7 +301,7 @@
             this.TabPageMin5.Location = new System.Drawing.Point(4, 24);
             this.TabPageMin5.Name = "TabPageMin5";
             this.TabPageMin5.Padding = new System.Windows.Forms.Padding(3);
-            this.TabPageMin5.Size = new System.Drawing.Size(1202, 357);
+            this.TabPageMin5.Size = new System.Drawing.Size(752, 440);
             this.TabPageMin5.TabIndex = 1;
             this.TabPageMin5.Text = "TabPageMin5";
             this.TabPageMin5.UseVisualStyleBackColor = true;
@@ -280,7 +326,7 @@
             this.ListViewMin5.GridLines = true;
             this.ListViewMin5.Location = new System.Drawing.Point(3, 3);
             this.ListViewMin5.Name = "ListViewMin5";
-            this.ListViewMin5.Size = new System.Drawing.Size(1196, 351);
+            this.ListViewMin5.Size = new System.Drawing.Size(746, 434);
             this.ListViewMin5.TabIndex = 1;
             this.ListViewMin5.UseCompatibleStateImageBehavior = false;
             this.ListViewMin5.View = System.Windows.Forms.View.Details;
@@ -291,7 +337,7 @@
             this.TabPageMin10.Location = new System.Drawing.Point(4, 24);
             this.TabPageMin10.Name = "TabPageMin10";
             this.TabPageMin10.Padding = new System.Windows.Forms.Padding(3);
-            this.TabPageMin10.Size = new System.Drawing.Size(1202, 357);
+            this.TabPageMin10.Size = new System.Drawing.Size(752, 440);
             this.TabPageMin10.TabIndex = 1;
             this.TabPageMin10.Text = "TabPageMin10";
             this.TabPageMin10.UseVisualStyleBackColor = true;
@@ -316,28 +362,60 @@
             this.ListViewMin10.GridLines = true;
             this.ListViewMin10.Location = new System.Drawing.Point(3, 3);
             this.ListViewMin10.Name = "ListViewMin10";
-            this.ListViewMin10.Size = new System.Drawing.Size(1196, 351);
+            this.ListViewMin10.Size = new System.Drawing.Size(746, 434);
             this.ListViewMin10.TabIndex = 2;
             this.ListViewMin10.UseCompatibleStateImageBehavior = false;
             this.ListViewMin10.View = System.Windows.Forms.View.Details;
+            // 
+            // CountGrpBox
+            // 
+            this.CountGrpBox.Controls.Add(this.CountNumeric);
+            this.CountGrpBox.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.CountGrpBox.Location = new System.Drawing.Point(309, 12);
+            this.CountGrpBox.Name = "CountGrpBox";
+            this.CountGrpBox.Size = new System.Drawing.Size(100, 50);
+            this.CountGrpBox.TabIndex = 5;
+            this.CountGrpBox.TabStop = false;
+            this.CountGrpBox.Text = "Count";
+            // 
+            // CountNumeric
+            // 
+            this.CountNumeric.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.CountNumeric.Location = new System.Drawing.Point(3, 19);
+            this.CountNumeric.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.CountNumeric.Name = "CountNumeric";
+            this.CountNumeric.Size = new System.Drawing.Size(94, 23);
+            this.CountNumeric.TabIndex = 0;
+            this.CountNumeric.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.CountNumeric.ThousandsSeparator = true;
+            this.CountNumeric.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // AutoUPbit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(784, 561);
+            this.ClientSize = new System.Drawing.Size(984, 561);
+            this.Controls.Add(this.CountGrpBox);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.StartBtn);
             this.Controls.Add(this.statusStrip1);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.MinuteGrpBox);
             this.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "AutoUPbit";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AutoUPBit";
             this.Load += new System.EventHandler(this.AutoUPbit_Load);
-            this.groupBox1.ResumeLayout(false);
+            this.MinuteGrpBox.ResumeLayout(false);
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -345,6 +423,8 @@
             this.TabPageMin1.ResumeLayout(false);
             this.TabPageMin5.ResumeLayout(false);
             this.TabPageMin10.ResumeLayout(false);
+            this.CountGrpBox.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.CountNumeric)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -352,8 +432,8 @@
 
         #endregion
 
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.GroupBox MinuteGrpBox;
+        private System.Windows.Forms.ComboBox MinuteComboBox;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripProgressBar toolStripProgressBar1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
@@ -403,6 +483,8 @@
         private System.Windows.Forms.ColumnHeader Min10ColumnHeader9;
         private System.Windows.Forms.ColumnHeader Min10ColumnHeader10;
         private System.Windows.Forms.ColumnHeader Min10ColumnHeader11;
+        private System.Windows.Forms.GroupBox CountGrpBox;
+        private System.Windows.Forms.NumericUpDown CountNumeric;
     }
 }
 

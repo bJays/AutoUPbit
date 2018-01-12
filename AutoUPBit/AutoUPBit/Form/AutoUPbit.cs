@@ -46,37 +46,46 @@ namespace AutoUPBit
             try
             {
 #endif 
-                // minutes, days, weeks, months
-                // Minutes : 1, 3, 5, 10, 15, 30, 60, 240
-                // Market  : KRW, BTC, ETH, USDT
-                // Coin    : BTC, XRP, (etc)
-                // 시세데이터 : 1, 2, 3, 4
-                // 최종시세데이터일시 : 
-                string JsonStr = this.GetChartData();
-                List<ChartData> data = ChartData.FromJson(JsonStr);
-
-                int RowIndex = 0;
-
-                this.ListViewMin1.BeginUpdate();
-                this.ListViewMin1.Items.Clear();
-                foreach (ChartData tChartData in data)
+                if (this.MinuteComboBox.SelectedIndex < 0)
                 {
-                    this.ListViewMin1.Items.Add(string.Format("{0:#,0}", RowIndex));
-                    this.ListViewMin1.Items[RowIndex].SubItems.Add(tChartData.Code);
-                    this.ListViewMin1.Items[RowIndex].SubItems.Add(tChartData.CandleDateTime.ToString());
-                    this.ListViewMin1.Items[RowIndex].SubItems.Add(tChartData.CandleDateTimeKst.ToString());
-                    this.ListViewMin1.Items[RowIndex].SubItems.Add(string.Format("{0:#,0.000}", tChartData.OpeningPrice));
-                    this.ListViewMin1.Items[RowIndex].SubItems.Add(string.Format("{0:#,0.000}", tChartData.HighPrice));
-                    this.ListViewMin1.Items[RowIndex].SubItems.Add(string.Format("{0:#,0.000}", tChartData.LowPrice));
-                    this.ListViewMin1.Items[RowIndex].SubItems.Add(string.Format("{0:#,0.000}", tChartData.TradePrice));
-                    this.ListViewMin1.Items[RowIndex].SubItems.Add(tChartData.CandleAccTradeVolume.ToString());
-                    this.ListViewMin1.Items[RowIndex].SubItems.Add(tChartData.CandleAccTradePrice.ToString());
-                    this.ListViewMin1.Items[RowIndex].SubItems.Add(tChartData.Timestamp.ToString());
-                    this.ListViewMin1.Items[RowIndex].SubItems.Add(tChartData.Unit.ToString());
-
-                    RowIndex += 1;
+                    //MessageBox.Show("");
                 }
-                this.ListViewMin1.EndUpdate();
+                else
+                {
+                    string MinuteStr = this.MinuteComboBox.SelectedItem.ToString();
+
+                    // minutes, days, weeks, months
+                    // Minutes : 1, 3, 5, 10, 15, 30, 60, 240
+                    // Market  : KRW, BTC, ETH, USDT
+                    // Coin    : BTC, XRP, (etc)
+                    // 시세데이터 : 1, 2, 3, 4
+                    // 최종시세데이터일시 : 
+                    string JsonStr = this.GetChartData(MinuteStr, (int)(this.CountNumeric.Value));
+                    List<ChartData> data = ChartData.FromJson(JsonStr);
+
+                    int RowIndex = 0;
+
+                    this.ListViewMin1.BeginUpdate();
+                    this.ListViewMin1.Items.Clear();
+                    foreach (ChartData tChartData in data)
+                    {
+                        this.ListViewMin1.Items.Add(string.Format("{0:#,0}", RowIndex));
+                        this.ListViewMin1.Items[RowIndex].SubItems.Add(tChartData.Code);
+                        this.ListViewMin1.Items[RowIndex].SubItems.Add(tChartData.CandleDateTime.ToString());
+                        this.ListViewMin1.Items[RowIndex].SubItems.Add(tChartData.CandleDateTimeKst.ToString());
+                        this.ListViewMin1.Items[RowIndex].SubItems.Add(string.Format("{0:#,0.000}", tChartData.OpeningPrice));
+                        this.ListViewMin1.Items[RowIndex].SubItems.Add(string.Format("{0:#,0.000}", tChartData.HighPrice));
+                        this.ListViewMin1.Items[RowIndex].SubItems.Add(string.Format("{0:#,0.000}", tChartData.LowPrice));
+                        this.ListViewMin1.Items[RowIndex].SubItems.Add(string.Format("{0:#,0.000}", tChartData.TradePrice));
+                        this.ListViewMin1.Items[RowIndex].SubItems.Add(tChartData.CandleAccTradeVolume.ToString());
+                        this.ListViewMin1.Items[RowIndex].SubItems.Add(tChartData.CandleAccTradePrice.ToString());
+                        this.ListViewMin1.Items[RowIndex].SubItems.Add(tChartData.Timestamp.ToString());
+                        this.ListViewMin1.Items[RowIndex].SubItems.Add(tChartData.Unit.ToString());
+
+                        RowIndex += 1;
+                    }
+                    this.ListViewMin1.EndUpdate();
+                }                
 #if DEBUG_MSG   
             }
             catch (System.Exception ex)
@@ -86,7 +95,7 @@ namespace AutoUPBit
 #endif
         }
 
-        private string GetChartData()
+        private string GetChartData(string MinStr, int Count)
         {
             string rst = null;
 
@@ -101,7 +110,8 @@ namespace AutoUPBit
                 // 시세데이터 : 1, 2, 3, 4
                 // 최종시세데이터일시 (UTC) : 
                 // 
-                string URL = "https://crix-api-endpoint.upbit.com/v1/crix/candles/minutes/10?code=CRIX.UPBIT.KRW-XRP&count=5000&to=2017-12-30%2004:30:30";
+                string URL = string.Format("https://crix-api-endpoint.upbit.com/v1/crix/candles/minutes/{0}?code=CRIX.UPBIT.KRW-XRP&count={1}&to=2017-12-30%2000:00:00", 
+                    MinStr, Count);
 
                 HttpWebRequest tRequest = (HttpWebRequest)WebRequest.Create(URL);
                 HttpWebResponse tResponse = (HttpWebResponse)tRequest.GetResponse();
