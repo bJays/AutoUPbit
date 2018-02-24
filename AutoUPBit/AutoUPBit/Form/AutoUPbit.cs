@@ -1,5 +1,6 @@
 ﻿#define DEBUG_MSG
 
+
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -18,14 +19,35 @@ namespace AutoUPBit
 {
     public partial class AutoUPbit : Form
     {
+        private int MAX_GET_DATA_COUNT = 200;
+
+        private string[] CoinNameStrs = new string[] { "BTC", "XRP" };
+
+
         public AutoUPbit()
         {
             InitializeComponent();
         }
 
-        private void AutoUPbit_Load(object sender, EventArgs e)
+        private void Init_UI()
         {
+#if DEBUG_MSG
+            try
+            {
+#endif 
+                this.Reset_UI();
+
 #if DEBUG_MSG   
+            }
+            catch (System.Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Init_UI");
+            }
+#endif
+        }
+        private void Init_Variable()
+        {
+#if DEBUG_MSG
             try
             {
 #endif 
@@ -35,7 +57,47 @@ namespace AutoUPBit
             }
             catch (System.Exception ex)
             {
-                MessageBox.Show(ex.Message, "");
+                MessageBox.Show(ex.Message, "Init_Variable");
+            }
+#endif
+        }
+        private void Reset_UI()
+        {
+#if DEBUG_MSG
+            try
+            {
+#endif 
+                this.UserDateTimePicker.Value = DateTime.Now;
+                this.CountNumeric.Value = this.MAX_GET_DATA_COUNT;
+                this.CoinNameCheckedListBox.Items.Clear();
+                foreach (string tCoinName in this.CoinNameStrs)
+                {
+                    this.CoinNameCheckedListBox.Items.Add(tCoinName);
+                }
+
+                this.ListViewMin1.Items.Clear();
+#if DEBUG_MSG   
+            }
+            catch (System.Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Reset_UI");
+            }
+#endif
+        }
+
+        private void AutoUPbit_Load(object sender, EventArgs e)
+        {
+#if DEBUG_MSG   
+            try
+            {
+#endif 
+                this.Init_UI();
+                this.Init_Variable();
+#if DEBUG_MSG   
+            }
+            catch (System.Exception ex)
+            {
+                MessageBox.Show(ex.Message, "AutoUPbit_Load");
             }
 #endif
         }
@@ -52,6 +114,16 @@ namespace AutoUPBit
                 }
                 else
                 {
+                    MessageBox.Show(string.Format("{0}", this.UserDateTimePicker.ToString()));
+
+                    string StrTargetDate, StrTargetTime;
+
+                    DateTime tDateTime = this.UserDateTimePicker.Value;
+
+                    // 2017-12-30
+                    StrTargetDate = string.Format("{0:0000}-{1:00}-{2:00}", tDateTime.Year, tDateTime.Month, tDateTime.Day);
+
+
                     string MinuteStr = this.MinuteComboBox.SelectedItem.ToString();
 
                     // minutes, days, weeks, months
@@ -60,7 +132,7 @@ namespace AutoUPBit
                     // Coin    : BTC, XRP, (etc)
                     // 시세데이터 : 1, 2, 3, 4
                     // 최종시세데이터일시 : 
-                    string JsonStr = this.GetChartData(MinuteStr, (int)(this.CountNumeric.Value));
+                    string JsonStr = this.GetChartData(StrTargetDate, MinuteStr, (int)(this.CountNumeric.Value));
                     List<ChartData> data = ChartData.FromJson(JsonStr);
 
                     int RowIndex = 0;
@@ -95,7 +167,7 @@ namespace AutoUPBit
 #endif
         }
 
-        private string GetChartData(string MinStr, int Count)
+        private string GetChartData(string TargetDate, string MinStr, int Count)
         {
             string rst = null;
 
@@ -110,8 +182,8 @@ namespace AutoUPBit
                 // 시세데이터 : 1, 2, 3, 4
                 // 최종시세데이터일시 (UTC) : 
                 // 
-                string URL = string.Format("https://crix-api-endpoint.upbit.com/v1/crix/candles/minutes/{0}?code=CRIX.UPBIT.KRW-XRP&count={1}&to=2017-12-30%2000:00:00", 
-                    MinStr, Count);
+                string URL = string.Format("https://crix-api-endpoint.upbit.com/v1/crix/candles/minutes/{0}?code=CRIX.UPBIT.KRW-XRP&count={1}&to={2}%2000:00:00", 
+                    MinStr, Count, TargetDate);
 
                 HttpWebRequest tRequest = (HttpWebRequest)WebRequest.Create(URL);
                 HttpWebResponse tResponse = (HttpWebResponse)tRequest.GetResponse();
@@ -145,6 +217,22 @@ namespace AutoUPBit
             catch (System.Exception ex)
             {
                 MessageBox.Show(ex.Message, "");
+            }
+#endif
+        }
+
+        private void ClearBtn_Click(object sender, EventArgs e)
+        {
+#if DEBUG_MSG
+            try
+            {
+#endif 
+                this.Reset_UI();
+#if DEBUG_MSG   
+            }
+            catch (System.Exception ex)
+            {
+                MessageBox.Show(ex.Message, "ClearBtn_Click");
             }
 #endif
         }
